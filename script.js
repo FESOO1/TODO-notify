@@ -67,11 +67,20 @@ function createANewNote(e) {
     };
 
     // DELETING A TODO LIST
+    const outputItself = document.querySelectorAll('.output-itself');
     const deleteButton = document.querySelectorAll('.output-itself-button-delete');
 
     for (let i = 0; i < deleteButton.length; i++) {
         deleteButton[i].addEventListener('click', () => {
-            
+            outputItself[i].parentNode.removeChild(outputItself[i]);
+            // DELETING A TODO
+            todoObject.todo.todoContent.splice(i, 1);
+            todoObject.todo.todoDate.splice(i, 1);
+            todoObject.todo.todoTime.splice(i, 1);
+            todoObject.todo.todoStatus.splice(i, 1);
+
+            // SAVING THE OBJECT IN THE LOCAL STORAGE
+            localStorage.setItem('todoObjectLS', JSON.stringify(todoObject));
         });
     };
 };
@@ -95,7 +104,7 @@ function displayStoredTodos() {
                         <h4 class="output-itself-date-text">TIME: <span class="output-itself-date-text-inner">${todoObjectLS.todo.todoTime[i]}</span></h4>
                     </div>
                     <div class="output-itself-buttons">
-                        <button class="output-itself-button" type="button">DELETE</button>
+                        <button class="output-itself-button output-itself-button-delete" type="button">DELETE</button>
                         <button class="output-itself-button" type="button">FINISHED</button>
                     </div>
                 </div>
@@ -106,6 +115,24 @@ function displayStoredTodos() {
             todoObject.todo.todoDate.push(todoObjectLS.todo.todoDate[i]);
             todoObject.todo.todoTime.push(todoObjectLS.todo.todoTime[i]);
             todoObject.todo.todoStatus.push(todoObjectLS.todo.todoStatus[i]);
+        };
+
+        // DELETING A TODO LIST
+        const outputItself = document.querySelectorAll('.output-itself');
+        const deleteButton = document.querySelectorAll('.output-itself-button-delete');
+
+        for (let i = 0; i < deleteButton.length; i++) {
+            deleteButton[i].addEventListener('click', () => {
+                outputItself[i].parentNode.removeChild(outputItself[i]);
+                // DELETING A TODO
+                todoObject.todo.todoContent.splice(i, 1);
+                todoObject.todo.todoDate.splice(i, 1);
+                todoObject.todo.todoTime.splice(i, 1);
+                todoObject.todo.todoStatus.splice(i, 1);
+
+                // SAVING THE OBJECT IN THE LOCAL STORAGE
+                localStorage.setItem('todoObjectLS', JSON.stringify(todoObject));
+            });
         };
     };
 
