@@ -74,6 +74,7 @@ main {
 
 .input label {
     display: flex;
+    position: relative;
 }
 
 .input-date,
@@ -89,10 +90,16 @@ main {
     display: none;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    opacity: 0;
+    padding: 4px;
+}
+
 input[type="time"]::-webkit-calendar-picker-indicator {
     position: absolute;
     opacity: 0;
+    left: -10px;
     padding: 4px;
 }
 
