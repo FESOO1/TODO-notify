@@ -105,7 +105,7 @@ function displayStoredTodos() {
                     </div>
                     <div class="output-itself-buttons">
                         <button class="output-itself-button output-itself-button-delete" type="button">DELETE</button>
-                        <button class="output-itself-button" type="button">FINISHED</button>
+                        <button class="output-itself-button output-itself-button-finished" type="button">FINISHED</button>
                     </div>
                 </div>
             `;
@@ -120,8 +120,12 @@ function displayStoredTodos() {
         // DELETING A TODO LIST
         const outputItself = document.querySelectorAll('.output-itself');
         const deleteButton = document.querySelectorAll('.output-itself-button-delete');
+        const finishedButton = document.querySelectorAll('.output-itself-button-finished');
 
         for (let i = 0; i < deleteButton.length; i++) {
+            let isFinished = false;
+
+            // DELETE A TODO
             deleteButton[i].addEventListener('click', () => {
                 outputItself[i].parentNode.removeChild(outputItself[i]);
                 // DELETING A TODO
@@ -132,6 +136,23 @@ function displayStoredTodos() {
 
                 // SAVING THE OBJECT IN THE LOCAL STORAGE
                 localStorage.setItem('todoObjectLS', JSON.stringify(todoObject));
+            });
+
+            // MARK A TODO AS FINISHED
+            finishedButton[i].addEventListener('click', () => {
+                if (isFinished === false) {
+                    outputItself[i].classList.add('output-itself-finished');
+                    outputItself[i].setAttribute('data-todo-status', 'finished');
+                    finishedButton[i].textContent = 'IN PROGRESS';
+                    
+                    isFinished = true;
+                } else {
+                    outputItself[i].classList.remove('output-itself-finished');
+                    outputItself[i].setAttribute('data-todo-status', 'in progress');
+                    finishedButton[i].textContent = 'FINISHED';
+                    
+                    isFinished = false;
+                };
             });
         };
     };

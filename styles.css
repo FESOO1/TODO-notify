@@ -211,3 +211,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 .output-itself-button:last-of-type:active {
     background-color: rgb(65,65,65);
 }
+
+/* OUTPUT ITSELF - JS */
+
+.output-itself-finished .output-itself-text,
+.output-itself-finished .output-itself-date-text {
+    text-decoration: line-through;
+    color: rgb(100,100,100);
+}
