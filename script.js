@@ -45,7 +45,7 @@ function createANewNote(e) {
                     <h4 class="output-itself-date-text">TIME: <span class="output-itself-date-text-inner">${inputTime.value}</span></h4>
                 </div>
                 <div class="output-itself-buttons">
-                    <button class="output-itself-button" type="button">DELETE</button>
+                    <button class="output-itself-button output-itself-button-delete" type="button">DELETE</button>
                     <button class="output-itself-button" type="button">FINISHED</button>
                 </div>
             </div>
@@ -64,6 +64,15 @@ function createANewNote(e) {
         for (const input of inputs) {
             input.value = '';
         };
+    };
+
+    // DELETING A TODO LIST
+    const deleteButton = document.querySelectorAll('.output-itself-button-delete');
+
+    for (let i = 0; i < deleteButton.length; i++) {
+        deleteButton[i].addEventListener('click', () => {
+            
+        });
     };
 };
 
