@@ -96,7 +96,7 @@ function displayStoredTodos() {
     if (todoObjectLS) {
         for (let i = 0; i < todoObjectLS.todo.todoContent.length; i++) {
             output.innerHTML += `
-                <div class="output-itself" data-todo-status="${todoObjectLS.todo.todoStatus[i]}">
+                <div class="output-itself ${todoObjectLS.todo.todoStatus[i] === 'finished' ? 'output-itself-finished' : ''}" data-todo-status="${todoObjectLS.todo.todoStatus[i]}">
                     <p class="output-itself-text">${todoObjectLS.todo.todoContent[i]}</p>
                     <div class="output-itself-date">
                         <h4 class="output-itself-date-text">DATE: <span class="output-itself-date-text-inner">${todoObjectLS.todo.todoDate[i]}</span></h4>
@@ -105,7 +105,7 @@ function displayStoredTodos() {
                     </div>
                     <div class="output-itself-buttons">
                         <button class="output-itself-button output-itself-button-delete" type="button">DELETE</button>
-                        <button class="output-itself-button output-itself-button-finished" type="button">FINISHED</button>
+                        <button class="output-itself-button output-itself-button-finished" type="button">${todoObjectLS.todo.todoStatus[i] === 'finished' ? 'IN PROGRESS' : 'FINISHED'}</button>
                     </div>
                 </div>
             `;
@@ -123,8 +123,6 @@ function displayStoredTodos() {
         const finishedButton = document.querySelectorAll('.output-itself-button-finished');
 
         for (let i = 0; i < deleteButton.length; i++) {
-            let isFinished = false;
-
             // DELETE A TODO
             deleteButton[i].addEventListener('click', () => {
                 outputItself[i].parentNode.removeChild(outputItself[i]);
@@ -140,18 +138,22 @@ function displayStoredTodos() {
 
             // MARK A TODO AS FINISHED
             finishedButton[i].addEventListener('click', () => {
-                if (isFinished === false) {
+                if (outputItself[i].getAttribute('data-todo-status') === 'in progress') {
                     outputItself[i].classList.add('output-itself-finished');
                     outputItself[i].setAttribute('data-todo-status', 'finished');
                     finishedButton[i].textContent = 'IN PROGRESS';
-                    
-                    isFinished = true;
+
+                    todoObject.todo.todoStatus[i] = 'finished';
+                    // SAVING THE OBJECT IN THE LOCAL STORAGE
+                    localStorage.setItem('todoObjectLS', JSON.stringify(todoObject));
                 } else {
                     outputItself[i].classList.remove('output-itself-finished');
                     outputItself[i].setAttribute('data-todo-status', 'in progress');
                     finishedButton[i].textContent = 'FINISHED';
-                    
-                    isFinished = false;
+
+                    todoObject.todo.todoStatus[i] = 'in progress';
+                    // SAVING THE OBJECT IN THE LOCAL STORAGE
+                    localStorage.setItem('todoObjectLS', JSON.stringify(todoObject));
                 };
             });
         };
