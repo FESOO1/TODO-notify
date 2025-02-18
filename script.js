@@ -91,8 +91,15 @@ function displayStoredTodos() {
                     </div>
                 </div>
             `;
+
+            // UPDATING THE OBJECT
+            todoObject.todo.todoContent.push(todoObjectLS.todo.todoContent[i]);
+            todoObject.todo.todoDate.push(todoObjectLS.todo.todoDate[i]);
+            todoObject.todo.todoTime.push(todoObjectLS.todo.todoTime[i]);
+            todoObject.todo.todoStatus.push(todoObjectLS.todo.todoStatus[i]);
         };
     };
+
 };
 
 displayStoredTodos();
