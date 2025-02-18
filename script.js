@@ -46,7 +46,7 @@ function createANewNote(e) {
                 </div>
                 <div class="output-itself-buttons">
                     <button class="output-itself-button output-itself-button-delete" type="button">DELETE</button>
-                    <button class="output-itself-button" type="button">FINISHED</button>
+                    <button class="output-itself-button output-itself-button-finished" type="button">FINISHED</button>
                 </div>
             </div>
         `;
@@ -69,6 +69,7 @@ function createANewNote(e) {
     // DELETING A TODO LIST
     const outputItself = document.querySelectorAll('.output-itself');
     const deleteButton = document.querySelectorAll('.output-itself-button-delete');
+    const finishedButton = document.querySelectorAll('.output-itself-button-finished');
 
     for (let i = 0; i < deleteButton.length; i++) {
         deleteButton[i].addEventListener('click', () => {
@@ -81,6 +82,27 @@ function createANewNote(e) {
 
             // SAVING THE OBJECT IN THE LOCAL STORAGE
             localStorage.setItem('todoObjectLS', JSON.stringify(todoObject));
+        });
+
+        // MARK A TODO AS FINISHED
+        finishedButton[i].addEventListener('click', () => {
+            if (outputItself[i].getAttribute('data-todo-status') === 'in progress') {
+                outputItself[i].classList.add('output-itself-finished');
+                outputItself[i].setAttribute('data-todo-status', 'finished');
+                finishedButton[i].textContent = 'IN PROGRESS';
+
+                todoObject.todo.todoStatus[i] = 'finished';
+                // SAVING THE OBJECT IN THE LOCAL STORAGE
+                localStorage.setItem('todoObjectLS', JSON.stringify(todoObject));
+            } else {
+                outputItself[i].classList.remove('output-itself-finished');
+                outputItself[i].setAttribute('data-todo-status', 'in progress');
+                finishedButton[i].textContent = 'FINISHED';
+
+                todoObject.todo.todoStatus[i] = 'in progress';
+                // SAVING THE OBJECT IN THE LOCAL STORAGE
+                localStorage.setItem('todoObjectLS', JSON.stringify(todoObject));
+            };
         });
     };
 };
