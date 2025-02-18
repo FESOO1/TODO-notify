@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --f-poppins: "Poppins", serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: var(--f-poppins);
+}
+
+body {
+    background-color: rgb(15,15,15);
+    position: relative;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(./assets/bg.svg) no-repeat;
+    background-size: cover;
+    z-index: -1;
+    opacity: 0.1;
+    background-attachment: fixed;
+}
+
+/* MAIN */
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 40px;
+    row-gap: 40px;
+}
+
+/* INPUT */
+
+.input {
+    width: 600px;
+    height: 45px;
+    background-color: rgb(30,30,30);
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 2rem;
+    column-gap: 10px;
+    padding: 5px 6.5px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.input-svg {
+    width: 20px;
+    height: 20px;
+}
+
+.input-itself {
+    background-color: transparent;
+    color: white;
+    outline: none;
+    border: 0;
+    font-size: 1rem;
+    padding-inline: 15px;
+}
+
+.input label {
+    display: flex;
+}
+
+.input-date,
+.input-time {
+    border: 0;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    background-color: red;
+}
+
+::-webkit-datetime-edit {
+    display: none;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    opacity: 0;
+    padding: 4px;
+}
+
+.input-button {
+    padding-inline: 15px;
+    height: 100%;
+    font-size: 1rem;
+    border-radius: 2rem;
+    border: 0;
+    background-color: rgb(50,50,50);
+    color: white;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+    cursor: pointer;
+}
+
+.input-button:hover {
+    background-color: rgb(60,60,60);
+}
+
+.input-button:active {
+    background-color: rgb(55,55,55);
+}
+
+/* OUTPUT */
+
+.output {
+    padding: 3px;
+    width: 100%;
+    padding-inline: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 60px 40px;
+}
+
+/* OUTPUT ITSELF */
+
+.output-itself {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    background-color: rgb(40,40,40);
+    padding: 5px;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.output-itself-text {
+    background-color: rgb(20,20,20);
+    color: white;
+    border-radius: 0.2rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 5px 10px;
+}
+
+.output-itself-date {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 5px;
+}
+
+.output-itself-date-divider {
+    height: 70%;
+    border: 0;
+    border-left: 1px solid rgba(255,255,255,0.2);
+}
+
+.output-itself-date-text {
+    color: white;
+    font-weight: 200;
+}
+
+.output-itself-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 5px;
+}
+
+.output-itself-button {
+    border: 0;
+    border-radius: 0.2rem;
+    font-size: 0.9rem;
+    padding-block: 5px;
+    background-color: rgb(60,60,60);
+    color: white;
+    cursor: pointer;
+}
+
+.output-itself-button:first-of-type:hover {
+    background-color: red;
+}
+
+.output-itself-button:first-of-type:active {
+    background-color: rgb(211, 0, 0);
+}
+
+.output-itself-button:last-of-type:hover {
+    background-color: rgb(70,70,70);
+}
+
+.output-itself-button:last-of-type:active {
+    background-color: rgb(65,65,65);
+}

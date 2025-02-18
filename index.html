@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODO that notifies.</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <main>
+        <form class="input">
+            <input type="text" class="input-itself" placeholder="Doing the dishes until Saturday.">
+            <label for="inputDate">
+                <input type="date" class="input-date" id="inputDate">
+                <svg class="input-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
+                    <path d="M18 2V4M6 2V4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M11.9955 13H12.0045M11.9955 17H12.0045M15.991 13H16M8 13H8.00897M8 17H8.00897" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M3.5 8H20.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M2.5 12.2432C2.5 7.88594 2.5 5.70728 3.75212 4.35364C5.00424 3 7.01949 3 11.05 3H12.95C16.9805 3 18.9958 3 20.2479 4.35364C21.5 5.70728 21.5 7.88594 21.5 12.2432V12.7568C21.5 17.1141 21.5 19.2927 20.2479 20.6464C18.9958 22 16.9805 22 12.95 22H11.05C7.01949 22 5.00424 22 3.75212 20.6464C2.5 19.2927 2.5 17.1141 2.5 12.7568V12.2432Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M3 8H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </label>
+            <label for="inputTime">
+                <input type="time" class="input-time" id="inputTime">
+                <svg class="input-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#ffffff" fill="none">
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
+                    <path d="M12 8V12L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </label>
+            <button type="submit" class="input-button">ADD</button>
+        </form>
+        <div class="output">
+            <div class="output-itself">
+                <pre class="output-itself-text">Going to city on Monday</pre>
+                <div class="output-itself-date">
+                    <h4 class="output-itself-date-text">DATE: <span class="output-itself-date-text-inner">10/20/2025</span></h4>
+                    <hr class="output-itself-date-divider">
+                    <h4 class="output-itself-date-text">TIME: <span class="output-itself-date-text-inner">8:20 PM</span></h4>
+                </div>
+                <div class="output-itself-buttons">
+                    <button class="output-itself-button" type="button">DELETE</button>
+                    <button class="output-itself-button" type="button">FINISHED</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <script src="./script.js"></script>
+</body>
+</html>
